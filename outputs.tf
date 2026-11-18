@@ -2,6 +2,10 @@ output "resiliencehubv2_services_arn" {
   description = "Map of arn values across all resiliencehubv2_services, keyed the same as var.resiliencehubv2_services"
   value       = { for k, v in aws_resiliencehubv2_service.resiliencehubv2_services : k => v.arn if v.arn != null && length(v.arn) > 0 }
 }
+output "resiliencehubv2_services_associated_system" {
+  description = "Map of associated_system values across all resiliencehubv2_services, keyed the same as var.resiliencehubv2_services"
+  value       = { for k, v in aws_resiliencehubv2_service.resiliencehubv2_services : k => v.associated_system if v.associated_system != null && length(v.associated_system) > 0 }
+}
 output "resiliencehubv2_services_dependency_discovery" {
   description = "Map of dependency_discovery values across all resiliencehubv2_services, keyed the same as var.resiliencehubv2_services"
   value       = { for k, v in aws_resiliencehubv2_service.resiliencehubv2_services : k => v.dependency_discovery if v.dependency_discovery != null && length(v.dependency_discovery) > 0 }

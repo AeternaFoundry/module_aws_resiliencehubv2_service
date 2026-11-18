@@ -10,6 +10,13 @@ resource "aws_resiliencehubv2_service" "resiliencehubv2_services" {
   region               = each.value.region
   tags                 = each.value.tags
 
+  dynamic "associated_system" {
+    for_each = each.value.associated_system != null ? each.value.associated_system : []
+    content {
+      system_arn = associated_system.value.system_arn
+    }
+  }
+
   dynamic "permission_model" {
     for_each = each.value.permission_model != null ? each.value.permission_model : []
     content {

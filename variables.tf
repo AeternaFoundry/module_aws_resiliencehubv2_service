@@ -11,6 +11,8 @@ Optional:
     - policy_arn
     - region
     - tags
+    - associated_system (block):
+        - system_arn (required)
     - permission_model (block):
         - cross_account_role (optional, block):
             - cross_account_role_arn (required)
@@ -27,6 +29,9 @@ EOT
     policy_arn           = optional(string)
     region               = optional(string)
     tags                 = optional(map(string))
+    associated_system = optional(list(object({
+      system_arn = string
+    })))
     permission_model = optional(list(object({
       cross_account_role = optional(list(object({
         cross_account_role_arn = string
