@@ -13,6 +13,7 @@ Optional:
     - tags
     - associated_system (block):
         - system_arn (required)
+        - user_journey_ids (optional)
     - permission_model (block):
         - cross_account_role (optional, block):
             - cross_account_role_arn (required)
@@ -30,7 +31,8 @@ EOT
     region               = optional(string)
     tags                 = optional(map(string))
     associated_system = optional(list(object({
-      system_arn = string
+      system_arn       = string
+      user_journey_ids = optional(set(string))
     })))
     permission_model = optional(list(object({
       cross_account_role = optional(list(object({

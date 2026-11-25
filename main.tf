@@ -13,7 +13,8 @@ resource "aws_resiliencehubv2_service" "resiliencehubv2_services" {
   dynamic "associated_system" {
     for_each = each.value.associated_system != null ? each.value.associated_system : []
     content {
-      system_arn = associated_system.value.system_arn
+      system_arn       = associated_system.value.system_arn
+      user_journey_ids = associated_system.value.user_journey_ids
     }
   }
 
